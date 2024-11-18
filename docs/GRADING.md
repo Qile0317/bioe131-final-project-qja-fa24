@@ -1,0 +1,49 @@
+# Grading
+
+[bcourses link](https://bcourses.berkeley.edu/courses/1538361/pages/final-project-details)
+
+## Project Description
+
+Emergent viral pathogens remain a global threat to human health (Bhadoria et al, 2021). In the past two decades, the world has experienced three coronavirus (SARS-CoV-1, MERS, and SARS-CoV-2), one influenza (H1N1 Swine Flu), one filovirus (Ebola) and one flavivirus pandemic (Zika). (There have also, of course, been numerous viral epidemics, which are also serious events.) The mechanisms which explain the severity of pandemic-level infections are poorly understood, making it impossible to predict with precision which viral family will be the next to reach pandemic status, although past epidemiological history and human encroachment on viral habitats do narrow the shortlist somewhat (Neumann et al, 2023; Marie et al, 2023).
+
+When - not if - the next major viral disease hits, there will (as in 2019-2020) be an early scramble to identify the causal viral pathogen and understand its biology and its evolution. This understanding will form a critical part of the immediate biomedical response. It will be useful for bioinformatics resources to be available ahead of this event, ready for use by researchers.
+
+Viruses evolve too quickly to build a giant genome alignment of all viral families. However, within each viral family, it is entirely possible to build genome alignments, prepare genome annotations, and perform other preparatory analyses that may be helpful to future viral genomics researchers. Since, as in the COVID-19 pandemic, there are likely to be many small groups around the world working on different subproblems, each of which may seek to customize the analysis they perform (for example, to focus on regional variants of the virus, or to highlight particular applications such as vaccine development or protein structure), it will be helpful if each such group can install their own copy of the database and customize it as they see fit. This may form a useful complement to centralized resources such as the NIH’s Bacterial and Virus Bioinformatics Research Center (https://www.bv-brc.org/).
+
+Your goal in this project is to build such a database, or more precisely a “database installer” (a software package that a research group can run to install their own local copy of the database), for one viral family. Each team will pick a viral family, ideally from one of the likely candidates for the next breakthrough pandemic.
+
+Teams can have up to four members. It is also permissible to have single-person teams, for those who would rather contribute as an individual. For teams with >1 member, specific contributions of individual team members must be clearly documented (one sentence per team member).
+
+A list of suggested candidate families is included below; you may also wish to review Table 1 in Neumann et al (2023), or to the databases described in Ritsch et al (2023), among other sources. It is OK if more than one team picks the same family. However, it is also OK if you coordinate (e.g. on Ed) to avoid too many teams choosing the same family, or to try and focus on different aspects (though we will not specifically penalize multiple teams covering the same family, and will not regard such teams as being in any kind of zero-sum direct competition). In fact, we have no objection to you coordinating between teams to share tools, tips, or techniques. Anything that raises the bar for the entire class is good, and will (in fact) be specifically incentivized.
+
+For the family that you choose, you will then create a GitHub repository that, when a user downloads and installs it (according to instructions which you will provide to users), will set up a local copy of the JBrowse2 genome browser (Diesh et al, 2023). Quick-start guides for installing JBrowse2 are given in the documentationLinks to an external site., with an even simpler step-by-step recipe in Diesh et al (2024). Some screenshots of its more advanced capabilities are shown in the galleryLinks to an external site.. The final lab for the class will be a JBrowse2-based lab, so you should already have some experience setting it up, and you can focus on customization, data curation, and data integration for the project.
+
+Ideally, the package itself should contain no data, but the code should instead download all data from stable URLs which are part of the configuration of your package (for example, from GenBank). However, you may find it necessary to include some data yourself, for example if there are any bioisnformatics analyses that you have performed on the data that you wish to include. If you end up including some data, that is OK, but you should very clearly document what data is a result of your own analysis and what data comes from external trusted sources. After all, you do not want to muddy the provenance of the data as part of this process.
+
+JBrowse2 is a very flexible software package with lots of installation options, so the above description leaves open a lot of possibilities for how you set up your viral database so as to be most useful to future pandemic researchers. There are lots of different kinds of data you might include. Will you try to include all viral genomes in the family (this might be overwhelming), or select a few genomes of interest (in which case, how will you select those genomes?) Will you focus on viruses that already infect humans or will you include animal hosts? Will you try to include synteny (alignments/evolutionary relationships) between the genomes that you select? What kind of genome annotation tracks will you include? Annotations of the main gene structures are probably essential, but maybe you can also include three-dimensional protein structure views? Mutations, perhaps with a focus on those involved in drug resistance or pathogenicity? Terminal repeats? RNA regulatory elements that are important for the viral lifecycle? Secondary structures in the genome, perhaps identified by computational analysis or by wet-lab experiment, whose function may be known or unknown? Maybe there are orthogonal types of data that you can include (phylogenetic trees, DNA or protein sequence alignments, protein 3D structures, host interactions, geographic or other metadata)? How well can you integrate all this information - for example, by providing consistent information across many different viruses or strains in your family of choice, by providing links or indices between different aspects of the data, or by providing alternate or summary views (such as tables or maps)? Will you attempt to integrate other tools (e.g. RNA structure predictors, text indexing, or AI systems?) It will be impossible to include all these things in the time you have, so you will definitely need to make some choices.
+
+Some of the data you choose to include may require that you perform some bioinformatics analysis, which may involve techniques that you learned in lectures or in lab. Other types of data (or bioinformatics analysis) may involve techniques that we have not covered, but which you may read about in the literature. We do not require that you only use techniques taught in BioE131/231 - this exercise is open-ended. However we will require that you provide a justification of your choices.
+
+Once the database is installed, in general we will expect it to run as a static siteLinks to an external site., i.e. a set of webpages that do not require any server computation resources beyond a webserver that serves up HTML, JavaScript, CSS, image, and data files to client web browsers. (This is how JBrowse2 works.) However, your installation may involve running bioinformatics tools (in which case it should also download and install those tools), and/or you may pre-generate some data files and include them in your server.
+
+## Grading
+
+Your submission should include the following:
+
+- A written report of at most two pages, supplied as a PDF file, that describes your thematic focus (including which viral genome family you elected to focus on and any other principles that guided your choice of content). Note: PDF means PDF. This file format should not be Microsoft Word, RTF, plain text, HTML, image file, or any other format but PDF
+- A link to a GitHub repository with documentation (e.g. a README) that describes how to set up and run your database
+- A working example of the database, installed in a web-visible location, to which you will also provide a link. One way to manage this is with GitHub Pages. Alternatively, if you have a computer connected to the Internet with a static IP address, you can use that.
+
+We will be grading on the following criteria:
+
+- A clearly-stated, unifying thematic focus that justifies your choice of content
+- Portable, well-documented software that other researchers will be able to run and understand
+- High quality data and/or analysis; appropriate use of bioinformatics tools or concepts
+- Comprehensive data (whatever your focus, you include a good sampling of available data in that area)
+- Strong data integration (e.g. consistent nomenclature and visual options, clear navigation links)
+- Good use of JBrowse2’s configuration and customization options, providing a high-quality visualization
+- Good presentation of your database (e.g. a front page, tools for navigation/indexing/search, etc.)
+- Clarity of textual presentation, including organization of ideas and a plain but precise writing style
+- Clear documentation of individual team members’ contributions (one short sentence per team member)
+- Any documented, nontrivial efforts that improved the quality of submissions for the rest of the class (e.g. provision of common tools or services, or advice/expertise that you made available)
+- Compliance with all other rubric given in this project description
