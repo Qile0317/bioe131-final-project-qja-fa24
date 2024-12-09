@@ -1,4 +1,4 @@
-https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/858/895/GCA_009858895.3_ASM985889v3/
 https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/536/935/GCA_011536935.1_Australia_VIC01_2020/
 https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/455/GCA_011537455.1_SARS-CoV-2-Iso_01-Human-2020-02-07-Swe/
 https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/545/135/GCA_011545135.1_ASM1154513v1/
