@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 export default function Home() {
   const [fastaSequence, setFastaSequence] = useState('');
@@ -16,16 +16,25 @@ export default function Home() {
   };
 
   const handleSearch = () => {
-    // Implement search logic here
-    // This would typically involve sending the fastaSequence and/or fileUpload to a backend
+    // If no specific inputs are given, return entire database
+    if (!fastaSequence && !metadataQuery && !fileUpload) {
+      console.log('Fetching entire database');
+      // Redirect to results page with a flag to fetch all results
+      window.location.href = '/results?fetchAll=true';
+      return;
+    }
+
+    // Existing search logic
     console.log('Searching with:', { fastaSequence, metadataQuery, fileUpload });
+    // Redirect to results page with search parameters
+    window.location.href = `/results?fasta=${encodeURIComponent(fastaSequence)}&metadata=${encodeURIComponent(metadataQuery)}`;
   };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6 text-center">Virus Sequence Database</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">Virus Genome Database</h1>
         
         {/* FASTA Sequence Search */}
         <div className="mb-6">
@@ -38,7 +47,7 @@ export default function Home() {
               value={fastaSequence}
               onChange={(e) => setFastaSequence(e.target.value)}
               placeholder="Paste FASTA sequence here..."
-              className="flex-grow p-2 border rounded"
+              className="flex-grow p-2 border rounded bg-white text-black placeholder-gray-500"
               rows={4}
             />
             <input 
@@ -60,7 +69,7 @@ export default function Home() {
             value={metadataQuery}
             onChange={(e) => setMetadataQuery(e.target.value)}
             placeholder="e.g., LOCATION = 'USA' AND YEAR > 2020"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded bg-white text-black placeholder-gray-500"
           />
         </div>
 
