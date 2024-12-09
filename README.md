@@ -10,10 +10,11 @@ cd <THIS_REPOS_TITLE>
 
 # TODO code for local installation
 
-# initialize the web interface
+# initialize the web interface on localhost:3000
 cd website
 npm run build
-npm run start # then open up browser at port 3000
+#npm run export
+npm run serve # then open up browser at port 3000
 ```
 
 ## Usage
