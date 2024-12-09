@@ -1,0 +1,15 @@
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/858/895/GCA_009858895.3_ASM985889v3/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/536/935/GCA_011536935.1_Australia_VIC01_2020/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/455/GCA_011537455.1_SARS-CoV-2-Iso_01-Human-2020-02-07-Swe/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/545/135/GCA_011545135.1_ASM1154513v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/935/GCA_009937935.1_ASM993793v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/355/GCA_011537355.1_ASM1153735v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/505/GCA_011537505.1_ASM1153750v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/825/GCA_011537825.2_ASM1153782v2/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/365/GCA_011537365.1_ASM1153736v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/785/GCA_011537785.1_ASM1153778v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/425/GCA_011537425.1_ASM1153742v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/235/GCA_011537235.1_BetaCoV_Korea_SNU01_2020/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/615/GCA_011537615.1_ASM1153761v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/895/GCA_009937895.1_ASM993789v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/011/537/625/GCA_011537625.1_ASM1153762v1/
