@@ -14,7 +14,7 @@ cd <THIS_REPOS_TITLE>
 cd website
 npm run build
 #npm run export
-npm run serve # then open up browser at port 3000
+#npm run start #broken, the npx serve is also broken...
 ```
 
 ## Usage
