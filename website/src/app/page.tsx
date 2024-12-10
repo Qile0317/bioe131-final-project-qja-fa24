@@ -18,16 +18,15 @@ export default function Home() {
   const handleSearch = () => {
     // If no specific inputs are given, return entire database
     if (!fastaSequence && !metadataQuery && !fileUpload) {
-      console.log('Fetching entire database');
-      // Redirect to results page with a flag to fetch all results
-      window.location.href = '/results?fetchAll=true';
+      window.location.href = process.env.NEXT_PUBLIC_BASE_PATH 
+        ? `${process.env.NEXT_PUBLIC_BASE_PATH}/results?fetchAll=true`
+        : '/results?fetchAll=true';
       return;
     }
-
-    // Existing search logic
-    console.log('Searching with:', { fastaSequence, metadataQuery, fileUpload });
+  
     // Redirect to results page with search parameters
-    window.location.href = `/results?fasta=${encodeURIComponent(fastaSequence)}&metadata=${encodeURIComponent(metadataQuery)}`;
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    window.location.href = `${basePath}/results?fasta=${encodeURIComponent(fastaSequence)}&metadata=${encodeURIComponent(metadataQuery)}`;
   };
 
   return (
