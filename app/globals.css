@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  /* height: 100%;
+  min-height: 100vh; */
+  margin: 0;
+  padding: 0;
+}
+
+/* main {
+  height: 100%;
+} */
+
+:root {
+  --covid-primary: #2C3E50;
+  --covid-secondary: #3498DB;
+  --covid-accent: #E74C3C;
+  --covid-light: #ECF0F1;
+}
