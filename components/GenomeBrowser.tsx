@@ -26,40 +26,24 @@ export default function GenomeBrowser({assemblyName = "China_(Wuhan).fna"}) {
       }
     },
     tracks: [
-        // {
-        //     type: 'FeatureTrack',
-        //     trackId: 'genes',
-        //     name: 'NCBI RefSeq Genes',
-        //     assemblyNames: ['GRCh38'],
-        //     category: ['Genes'],
-        //     adapter: {
-        //         type: 'Gff3TabixAdapter',
-        //         gffGzLocation: {
-        //         uri: 'https://s3.amazonaws.com/jbrowse.org/genomes/GRCh38/ncbi_refseq/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.sorted.gff.gz',
-        //         },
-        //         index: {
-        //         location: {
-        //             uri: 'https://s3.amazonaws.com/jbrowse.org/genomes/GRCh38/ncbi_refseq/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.sorted.gff.gz.tbi',
-        //         },
-        //         },
-        //     },
-        //     textSearching: {
-        //         textSearchAdapter: {
-        //         type: 'TrixTextSearchAdapter',
-        //         textSearchAdapterId: 'gff3tabix_genes-index',
-        //         ixFilePath: {
-        //             uri: 'https://jbrowse.org/genomes/GRCh38/ncbi_refseq/trix/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.sorted.gff.gz.ix',
-        //         },
-        //         ixxFilePath: {
-        //             uri: 'https://jbrowse.org/genomes/GRCh38/ncbi_refseq/trix/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.sorted.gff.gz.ixx',
-        //         },
-        //         metaFilePath: {
-        //             uri: 'https://jbrowse.org/genomes/GRCh38/ncbi_refseq/trix/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.sorted.gff.gz_meta.json',
-        //         },
-        //         assemblyNames: ['GRCh38'],
-        //         },
-        //     },
-        // },
+        {
+            type: 'FeatureTrack',
+            trackId: 'genes',
+            name: 'Genes',
+            assemblyNames: [`${assemblyName}`],
+            category: ['Genes'],
+            adapter: {
+                type: 'Gff3TabixAdapter',
+                gffGzLocation: {
+                uri: `./genome_data/${loc}/${loc}_genes.gff.gz`,
+                },
+                index: {
+                  location: {
+                      uri: `./genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
+                  },
+                },
+            }
+        },
     ],
     defaultSession: {
       name: 'COVID-19 Browser',
