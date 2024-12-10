@@ -205,3 +205,5 @@ packages/react-devtools-timeline/dist
 
 # temp
 app/genome_data/
+
+dev/
