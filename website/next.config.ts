@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   output: 'export',
   images: {
     unoptimized: true
@@ -9,4 +10,5 @@ const nextConfig: NextConfig = {
   assetPrefix: process.env.GITHUB_ACTIONS ? '/website' : '',
 };
 
-export default nextConfig;
+// export default nextConfig;
+module.exports = nextConfig
