@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
@@ -5,6 +6,11 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+=======
+export default function AboutPage() {
+  return (
+    <div className="min-h-screen flex flex-col">
+>>>>>>> main
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-center">
           About Virus Genome Database
@@ -28,7 +34,10 @@ export default function AboutPage() {
           </ul>
         </div>
       </main>
+<<<<<<< HEAD
       <Footer />
+=======
+>>>>>>> main
     </div>
   );
 }
