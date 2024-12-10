@@ -38,3 +38,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+## temp
+.venv
+app/genome_data/
+website/
+writeup/
