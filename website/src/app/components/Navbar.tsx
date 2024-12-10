@@ -7,11 +7,7 @@ export default function Navbar() {
       <Link href="/" className="flex items-center space-x-2">
         <Image 
           src="/globe.svg" 
-<<<<<<< HEAD
-          alt="Virus Database Logo" 
-=======
           alt="Logo" 
->>>>>>> main
           width={40} 
           height={40} 
           className="filter brightness-0 invert"
@@ -20,10 +16,6 @@ export default function Navbar() {
       </Link>
       <div className="space-x-4">
         <Link href="/" className="hover:text-cyan-300 transition-colors">Home</Link>
-<<<<<<< HEAD
-        <Link href="/search" className="hover:text-cyan-300 transition-colors">Search</Link>
-=======
->>>>>>> main
         <Link href="/about" className="hover:text-cyan-300 transition-colors">About</Link>
         <Link href="/customize" className="hover:text-cyan-300 transition-colors">Customize DB</Link>
       </div>

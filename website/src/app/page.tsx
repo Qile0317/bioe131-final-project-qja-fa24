@@ -1,10 +1,5 @@
 'use client';
 import { useState } from 'react';
-<<<<<<< HEAD
-import Navbar from '@/app/components/Navbar';
-import Footer from '@/app/components/Footer';
-=======
->>>>>>> main
 
 export default function Home() {
   const [fastaSequence, setFastaSequence] = useState('');
@@ -21,18 +16,6 @@ export default function Home() {
   const handleSearch = () => {
     // If no specific inputs are given, return entire database
     if (!fastaSequence && !metadataQuery && !fileUpload) {
-<<<<<<< HEAD
-      console.log('Fetching entire database');
-      // Redirect to results page with a flag to fetch all results
-      window.location.href = '/results?fetchAll=true';
-      return;
-    }
-
-    // Existing search logic
-    console.log('Searching with:', { fastaSequence, metadataQuery, fileUpload });
-    // Redirect to results page with search parameters
-    window.location.href = `/results?fasta=${encodeURIComponent(fastaSequence)}&metadata=${encodeURIComponent(metadataQuery)}`;
-=======
       window.location.href = process.env.NEXT_PUBLIC_BASE_PATH 
         ? `${process.env.NEXT_PUBLIC_BASE_PATH}/results?fetchAll=true`
         : '/results?fetchAll=true';
@@ -42,19 +25,12 @@ export default function Home() {
     // Redirect to results page with search parameters
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     window.location.href = `${basePath}/results?fasta=${encodeURIComponent(fastaSequence)}&metadata=${encodeURIComponent(metadataQuery)}`;
->>>>>>> main
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-<<<<<<< HEAD
-      <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6 text-center">Virus Genome Database</h1>
-=======
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-center">Virus Sequence Database</h1>
->>>>>>> main
         
         {/* FASTA Sequence Search */}
         <div className="mb-6">
@@ -79,11 +55,7 @@ export default function Home() {
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Metadata Query */}
-=======
         {/* Metadata Query - TODO input sanitization! */}
->>>>>>> main
         <div className="mb-6">
           <label htmlFor="metadata-query" className="block mb-2 font-semibold">
             Metadata SQL Query
@@ -106,10 +78,6 @@ export default function Home() {
           </button>
         </div>
       </main>
-<<<<<<< HEAD
-      <Footer />
-=======
->>>>>>> main
     </div>
   );
 }

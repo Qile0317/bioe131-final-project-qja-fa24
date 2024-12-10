@@ -1,12 +1,5 @@
 import type { NextConfig } from "next";
 
-<<<<<<< HEAD
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
-=======
 let isLocalhost = false;
 
 if (typeof window !== 'undefined') {
@@ -31,4 +24,3 @@ const nextConfig: NextConfig = {
 
 // export default nextConfig;
 module.exports = nextConfig
->>>>>>> main

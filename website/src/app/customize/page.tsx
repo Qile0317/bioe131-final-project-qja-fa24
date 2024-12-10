@@ -1,10 +1,5 @@
 'use client';
 import { useState } from 'react';
-<<<<<<< HEAD
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-=======
->>>>>>> main
 
 export default function CustomizeDatabasePage() {
   const [databaseUrl, setDatabaseUrl] = useState('');
@@ -29,10 +24,6 @@ export default function CustomizeDatabasePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-<<<<<<< HEAD
-      <Navbar />
-=======
->>>>>>> main
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-center">
           Customize Virus Database
@@ -82,10 +73,6 @@ export default function CustomizeDatabasePage() {
           </div>
         </div>
       </main>
-<<<<<<< HEAD
-      <Footer />
-=======
->>>>>>> main
     </div>
   );
 }
