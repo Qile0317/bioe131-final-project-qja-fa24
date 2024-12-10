@@ -1,7 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import Image from 'next/image';
 
 // Placeholder for actual query results
@@ -26,7 +24,6 @@ const sampleResults = [
   
     return (
       <div className="min-h-screen flex flex-col">
-        <Navbar />
         <main className="flex-grow container mx-auto px-4 py-8 grid grid-cols-2 gap-8">
           {/* Results List */}
           <div className="border rounded p-4">
@@ -81,7 +78,6 @@ const sampleResults = [
             </div>
           </div>
         </main>
-        <Footer />
       </div>
     );
   }

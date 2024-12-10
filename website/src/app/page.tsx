@@ -1,7 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Navbar from '@/app/components/Navbar';
-import Footer from '@/app/components/Footer';
 
 export default function Home() {
   const [fastaSequence, setFastaSequence] = useState('');
@@ -31,7 +29,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-center">Virus Genome Database</h1>
         
@@ -81,7 +78,6 @@ export default function Home() {
           </button>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

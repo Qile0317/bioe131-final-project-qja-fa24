@@ -13,6 +13,7 @@ cd <THIS_REPOS_TITLE>
 # initialize the web interface on localhost:3000
 cd website
 npm run build
+npm run dev
 #npm run export
 #npm run start #broken, the npx serve is also broken...
 ```
