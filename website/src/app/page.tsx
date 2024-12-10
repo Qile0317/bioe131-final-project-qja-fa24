@@ -59,7 +59,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Metadata Query */}
+        {/* Metadata Query - TODO input sanitization! */}
         <div className="mb-6">
           <label htmlFor="metadata-query" className="block mb-2 font-semibold">
             Metadata SQL Query
