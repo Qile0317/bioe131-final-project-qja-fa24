@@ -20,8 +20,11 @@ npm run dev
 
 ## Usage
 
-## Team members
+## Team members and contributions
 
 - Annalea Maeder (@annaleamaeder)
+    - TODO
 - Juno Lee (@JunoLee128)
+    - TODO
 - Qile Yang (@Qile0317)
+    - TODO
