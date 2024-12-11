@@ -3,7 +3,7 @@
 ## Final feature list
 
 - [ ] CLI tool
-    - [ ] Database installer
+    - [x] Database installer
     - [ ] optional arguments to compute metrics to add to metadata
         - [ ] MAF frequency
         - [ ] Nucleotide diversity
@@ -14,6 +14,7 @@
 
 - [ ] Web interface (I think this is actually a db EXPLORER in this case instead of a search tool)
     - [x] Redo front page to remove input of fasta sequence field
+    - [ ] Db abstraction
     - [ ] Implement metadata filtering for query result with SQL
     - [ ] Incorporate visualization widget that is generic extensible to any react component
         - [ ] interactive geographic component that has adaptable points
