@@ -16,6 +16,7 @@ const processStaticDatabase = () => {
 };
 
 export default function ResultsPage() {
+  const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna");
   const [queryResults] = useState(processStaticDatabase());
   const [selectedResult, setSelectedResult] = useState(queryResults[0]);
   const [activeTab, setActiveTab] = useState('Visualization 1');
@@ -77,7 +78,7 @@ export default function ResultsPage() {
           {/* Tab Content */}
           <div className="flex-grow bg-gray-800 flex items-center justify-center rounded">
             {activeTab === 'Visualization 1' && (
-              <WorldMap data={selectedResult} />
+              <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}
             {activeTab === 'Visualization 2' && (
               <Image
