@@ -114,31 +114,32 @@ export default function WorldMap({
     onCountrySelect: (country: Country) => void;
   }) {
 
-    const [plotWidth, setPlotWidth] = useState<number>(window.innerWidth);
+    const [plotWidth, setPlotWidth] = useState<number>(1000);
+
     useEffect(() => {
-        const handleResize = () => setPlotWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-    
-        return () => window.removeEventListener('resize', handleResize);
+      // Access `window` only after the component mounts
+      const handleResize = () => setPlotWidth(window.innerWidth);
+      handleResize(); // Set initial value
+      window.addEventListener('resize', handleResize);
+
+      return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const data = useMemo(() => {
-        return [
-          {
-            type: 'scattergeo' as const, // Explicitly specify the type as 'scattergeo'
-            lon: countries.map((country) => country.coordinates[1]), // Longitude
-            lat: countries.map((country) => country.coordinates[0]), // Latitude
-            text: countries.map((country) => country.displayName), // Hover text
-            mode: "markers",
-            marker: {
-              size: 8,
-              color: 'red',
-              symbol: 'circle',
-            },
-            hoverinfo: 'text', // Hover info setting
-          },
-        ];
-    }, [countries]);  
+    const data: Partial<Plotly.PlotData>[] = [
+      {
+        type: 'scattergeo' as const,
+        lon: countries.map((country) => country.coordinates[1]),
+        lat: countries.map((country) => country.coordinates[0]),
+        text: countries.map((country) => country.displayName),
+        mode: "markers",
+        marker: {
+          size: 8,
+          color: 'red',
+          symbol: 'circle',
+        },
+        hoverinfo: 'text',
+      },
+    ];  
   
     const layout = {
       geo: {
