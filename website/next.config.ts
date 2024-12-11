@@ -18,8 +18,13 @@ const nextConfig: NextConfig = {
   },
   basePath: isLocalhost ? '' : process.env.NEXT_PUBLIC_BASE_PATH || '',
   assetPrefix: isLocalhost ? '' : process.env.NEXT_PUBLIC_BASE_PATH || '',
-  // basePath: isGithubActions ? `/${repoName}` : '',
-  // assetPrefix: isGithubActions ? `/${repoName}` : '',
+  // webpack: (config) => {
+  //   config.resolve.alias = {
+  //     ...config.resolve.alias,
+  //     '@jbrowse/core': require.resolve('@jbrowse/core'),
+  //   };
+  //   return config;
+  // },
 };
 
 // export default nextConfig;
