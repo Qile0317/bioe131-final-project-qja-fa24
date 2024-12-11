@@ -17,7 +17,6 @@ export default function Navbar() {
       <div className="space-x-4">
         <Link href="/" className="hover:text-cyan-300 transition-colors">Home</Link>
         <Link href="/about" className="hover:text-cyan-300 transition-colors">About</Link>
-        <Link href="/customize" className="hover:text-cyan-300 transition-colors">Customize DB</Link>
       </div>
     </nav>
   );
