@@ -1,13 +1,13 @@
 "use client";
 import { useState } from 'react';
-import WorldMap from './components/WorldMap';
-import GenomeBrowser from './components/GenomeBrowser';
+// import WorldMap from './components/WorldMap';
+// import GenomeBrowser from './components/GenomeBrowser';
 
 export default function Home() {
 
   // experimental - temporarily here from merging juno branch
-  const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna");
-
+  // const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna");
+  // console.log(setSelectedGenome);
 
   // original code below
 
@@ -56,8 +56,8 @@ export default function Home() {
         </div>
 
         {/* temporary experimental embedding */}
-        <GenomeBrowser assemblyName={selectedGenome}/>
-        <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
+        {/* <GenomeBrowser assemblyName={selectedGenome}/> */}
+        {/* <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} /> */}
 
       </main>
     </div>
