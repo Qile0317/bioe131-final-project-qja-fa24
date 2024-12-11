@@ -42,4 +42,8 @@ for line in $(cat installation_scripts/data_listing.txt); do
     cd ../..
 done
 
-mv genome_data/ website/public/genome_data/
+if [ -z "$1" ]; then
+    mv genome_data/ website/public/genome_data/
+else
+    mv genome_data/ "$1"
+fi
