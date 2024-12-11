@@ -2,6 +2,8 @@
 
 This repository contains a cli tool that acts as a database installer for a collection of COVID-19 viral sequences from across the world. There is also a web interface that allows users to explore the sequences by country, and other extensible parameters.
 
+The web interface is built using Next.js, React, TypeScript, and Tailwind CSS with the help of various npm packages. The database is installed using a bash script that downloads the data from a remote location and sets up the database for the web interface.
+
 ## Local installation of the DB
 
 ```bash
@@ -15,13 +17,14 @@ bash installation_scripts/fetch_data.sh <INSTALL_LOCATION>
 
 ## Usage and installation of the web explorer interface
 
-If you want to locally host the website, do:
+If you want to locally host the website, you must have the latest versions of `Node.js` and `npm` installed. To install the website and run it locally, do:
 
 ```bash
 # assume you are at the root of the repo
 # with no arguments, database is installed as a static file for the website
 bash installation_scripts/fetch_data.sh
 cd website
+npm install
 npm run dev
 # open browser on the corresponding localhost port, probably 3000 if not in use
 ```

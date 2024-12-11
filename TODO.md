@@ -14,7 +14,6 @@
 
 - [ ] Web interface (I think this is actually a db EXPLORER in this case instead of a search tool)
     - [x] Redo front page to remove input of fasta sequence field
-    - [ ] Db abstraction
     - [ ] Implement metadata filtering for query result with SQL
     - [ ] Incorporate visualization widget that is generic extensible to any react component
         - [ ] interactive geographic component that has adaptable points
