@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@jbrowse/react-linear-genome-view": "^2.17.0",
+    "lucide-react": "^0.468.0",
     "next": "^15.1.0",
     "plotly.js": "^2.35.2",
     "react": "^19.0.0",
