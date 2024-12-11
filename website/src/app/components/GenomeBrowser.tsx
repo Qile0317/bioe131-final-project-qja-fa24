@@ -4,30 +4,37 @@ import React, { useState, useEffect } from 'react';
 import { createViewState, JBrowseApp } from '@jbrowse/react-app';
 import makeWorkerInstance from '@jbrowse/react-app/esm/makeWorkerInstance';
 import '@fontsource/roboto';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+
+type ViewModel = ReturnType<typeof createViewState>
 
 export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
-  const [viewState, setViewState] = useState(null);
+
+  const [viewState, setViewState] = useState<ViewModel | null>(null);
+  
   const loc = assemblyName.slice(0, -4);
 
   useEffect(() => {
     const state = createViewState({
       config: {
-        assembly: {
-          name: assemblyName,
-          sequence: {
-            type: 'ReferenceSequenceTrack',
-            trackId: `Reference Track (${assemblyName})`,
-            adapter: {
-              type: 'IndexedFastaAdapter',
-              fastaLocation: {
-                uri: `./genome_data/${loc}/${assemblyName}`,
+        assemblies: [
+          {
+            name: assemblyName,
+            sequence: {
+              type: 'ReferenceSequenceTrack',
+              trackId: `Reference Track (${assemblyName})`,
+              adapter: {
+                type: 'IndexedFastaAdapter',
+                fastaLocation: {
+                  uri: `./genome_data/${loc}/${assemblyName}`,
+                },
+                faiLocation: {
+                  uri: `./genome_data/${loc}/${assemblyName}.fai`,
+                },
               },
-              faiLocation: {
-                uri: `./genome_data/${loc}/${assemblyName}.fai`,
-              },
-            },
-          },
-        },
+            }
+          }
+        ],
         tracks: [
           {
             type: 'FeatureTrack',
@@ -50,14 +57,29 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
         ],
         defaultSession: {
           name: 'COVID-19 Browser',
-          view: {
-            id: 'linearGenomeView',
-            type: 'LinearGenomeView',
-          },
+          margin: 0,
+          views: [
+            {
+              id: 'linearGenomeView',
+              type: 'LinearGenomeView',
+              tracks: [
+                {
+                  type: 'ReferenceSequenceTrack',
+                  configuration: 'Reference Track (China_(Wuhan).fna)',
+                },
+                {
+                  type: 'FeatureTrack',
+                  configuration: 'Genes',
+                },
+              ],
+            },
+          ]
         },
       },
       makeWorkerInstance,
-    });
+      hydrateFn: hydrateRoot,
+      createRootFn: createRoot,
+    })
     setViewState(state);
   }, [assemblyName, loc]);
 
