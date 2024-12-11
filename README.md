@@ -12,7 +12,6 @@ cd <THIS_REPOS_TITLE>
 source installation_scripts/fetch_data.sh
 
 # initialize the web interface on localhost:3000
-cd juno-website-demo
 npm install
 npm run dev
 #npm run export
