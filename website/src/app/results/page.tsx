@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import WorldMap from '../components/WorldMap';
 
 // Static database simulation
 const staticDatabase = [
@@ -76,12 +77,7 @@ export default function ResultsPage() {
           {/* Tab Content */}
           <div className="flex-grow bg-gray-800 flex items-center justify-center rounded">
             {activeTab === 'Visualization 1' && (
-              <Image
-                src="/placeholder-combined-chart.svg"
-                alt="Visualization 1 Placeholder"
-                width={800}
-                height={400}
-              />
+              <WorldMap data={selectedResult} />
             )}
             {activeTab === 'Visualization 2' && (
               <Image
