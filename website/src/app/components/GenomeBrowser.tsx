@@ -1,10 +1,6 @@
 'use client';
 import { createViewState, JBrowseLinearGenomeView } from '@jbrowse/react-linear-genome-view';
 
-// interface GenomeBrowserProps {
-//    assemblyName: string;
-// }
-
 // export default function GenomeBrowser({ genomeUrl }: GenomeBrowserProps) {
 export default function GenomeBrowser({assemblyName = "China_(Wuhan).fna"}) {
   const loc: string = assemblyName.slice(0, -4);
