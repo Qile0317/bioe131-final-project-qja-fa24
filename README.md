@@ -17,13 +17,14 @@ bash installation_scripts/fetch_data.sh <INSTALL_LOCATION>
 
 ## Usage and installation of the web explorer interface
 
-If you want to locally host the website, do:
+If you want to locally host the website, you must have the latest versions of `Node.js` and `npm` installed. To install the website and run it locally, do:
 
 ```bash
 # assume you are at the root of the repo
 # with no arguments, database is installed as a static file for the website
 bash installation_scripts/fetch_data.sh
 cd website
+npm install
 npm run dev
 # open browser on the corresponding localhost port, probably 3000 if not in use
 ```
