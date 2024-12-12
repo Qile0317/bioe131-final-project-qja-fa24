@@ -24,6 +24,7 @@ jobs:
 
       - name: Create conda env
         run: |
+          conda init
           conda create -n samtools_env
           conda activate samtools_env
 
