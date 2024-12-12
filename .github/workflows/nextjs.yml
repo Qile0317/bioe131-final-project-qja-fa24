@@ -22,22 +22,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up conda
+      - name: Set up static db
         uses: conda-incubator/setup-miniconda@v3
-        with:
-          activate-environment: samtools_env
 
       - name: Download db installer dependencies
         run: |
+          conda install conda-forge::libarchive
           conda install conda-forge::zlib
           conda install -c bioconda htslib samtools tabix
-
-          echo installing jbrowse-cli with npm
           npm install -g @jbrowse/cli
 
       - name: Download static Db
         run: |
-          conda activate samtools_env
           bash installation_scripts/fetch_data.sh
       
       - name: Detect package manager
