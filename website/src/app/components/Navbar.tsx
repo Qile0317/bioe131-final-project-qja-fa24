@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="flex items-center justify-between p-4 bg-slate-800 text-white shadow-lg">
       <Link href="/" className="flex items-center space-x-2">
         <Image 
-          src={"bioe131-final-project-qja-fa24" + '/globe.svg'}
+          src='%PUBLIC_URL%/globe.svg'
           alt="Logo" 
           width={40} 
           height={40} 
