@@ -72,12 +72,16 @@ export default function ResultsPage() {
           </div>
 
           {/* Tab Content */}
-          <div className="flex-grow bg-gray-800 flex items-center justify-center rounded">
+          <div className="flex-grow bg-gray-800 flex items-center justify-center rounded overflow-y-auto">
             {activeTab === 'Geolocation' && (
-              <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
+              <div className="h-full w-full">
+                <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
+              </div>
             )}
             {activeTab === 'Jbrowse2' && (
-              <GenomeBrowser assemblyName={selectedGenome} />
+              <div className="h-full w-full">
+                <GenomeBrowser assemblyName={selectedGenome} />
+              </div>
             )}
           </div>
 
