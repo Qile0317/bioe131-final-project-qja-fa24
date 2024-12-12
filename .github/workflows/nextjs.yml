@@ -22,12 +22,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create conda env
-        run: |
-          conda create -n samtools_env
-          conda init
-          source ~/.bashrc
-          conda activate samtools_env
+      - name: Set up conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: samtools_env
 
       - name: Download db installer dependencies
         run: |
