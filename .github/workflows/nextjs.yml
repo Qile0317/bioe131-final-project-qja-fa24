@@ -17,18 +17,19 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l {0}
+    # defaults:
+    #   run:
+    #     shell: bash -l {0}
     steps:
 
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download and load static db
-        run: |
-          git clone https://github.com/Qile0317/covid-sequences.git
-          mv covid-sequences website/public/genome_data
+      - name: Download static db
+        uses: actions/checkout@v4
+        with:
+          repository: Qile0317/covid-sequences
+          path: website/public/genome_data
       
       - name: Detect package manager
         id: detect-package-manager
