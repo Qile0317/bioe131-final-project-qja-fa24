@@ -24,6 +24,7 @@ jobs:
 
       - name: Download db installer dependencies
         run: |
+          conda install conda-forge::zlib
           conda install -c bioconda samtools
           npm install -g @jbrowse/cli
 

@@ -48,6 +48,3 @@ if [ -z "$1" ]; then
 else
     mv "$temp_dir/" "$1"
 fi
-
-# Clean up
-rmdir "$temp_dir"
