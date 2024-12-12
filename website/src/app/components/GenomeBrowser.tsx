@@ -26,10 +26,10 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
               adapter: {
                 type: 'IndexedFastaAdapter',
                 fastaLocation: {
-                  uri: `./genome_data/${loc}/${assemblyName}`,
+                  uri: `/genome_data/${loc}/${assemblyName}`,
                 },
                 faiLocation: {
-                  uri: `./genome_data/${loc}/${assemblyName}.fai`,
+                  uri: `/genome_data/${loc}/${assemblyName}.fai`,
                 },
               },
             }
@@ -45,16 +45,17 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
             adapter: {
               type: 'Gff3TabixAdapter',
               gffGzLocation: {
-                uri: `./genome_data/${loc}/${loc}_genes.gff.gz`,
+                uri: `/genome_data/${loc}/${loc}_genes.gff.gz`,
               },
               index: {
                 location: {
-                  uri: `./genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
+                  uri: `/genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
                 },
               },
             },
           },
         ],
+        // is this needed?
         defaultSession: {
           name: 'COVID-19 Browser',
           margin: 0,
