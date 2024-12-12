@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import WorldMap from '../components/WorldMap';
+import GenomeBrowser from '../components/GenomeBrowser';
 
 // Static database simulation
 const staticDatabase = [
@@ -81,12 +82,7 @@ export default function ResultsPage() {
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}
             {activeTab === 'Visualization 2' && (
-              <Image
-                src="/placeholder-chart2.svg"
-                alt="Visualization 2 Placeholder"
-                width={800}
-                height={400}
-              />
+              <GenomeBrowser assemblyName={selectedGenome} />
             )}
             {activeTab === 'Visualization 3' && (
               <Image

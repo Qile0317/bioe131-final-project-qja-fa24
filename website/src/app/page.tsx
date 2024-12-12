@@ -1,15 +1,7 @@
 "use client";
 import { useState } from 'react';
-// import WorldMap from './components/WorldMap';
-// import GenomeBrowser from './components/GenomeBrowser';
 
 export default function Home() {
-
-  // experimental - temporarily here from merging juno branch
-  // const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna");
-  // console.log(setSelectedGenome);
-
-  // original code below
 
   const [metadataQuery, setMetadataQuery] = useState('');
 
