@@ -22,11 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create conda env
-        run: |
-          conda init
-          conda create -n samtools_env
-          conda activate samtools_env
+      # - name: Create conda env
+      #   run: |
+      #     conda init
+      #     conda create -n samtools_env
+      #     conda activate samtools_env
 
       - name: Download db installer dependencies
         run: |
