@@ -27,7 +27,7 @@ jobs:
 
       - name: Download db installer dependencies
         run: |
-          conda install conda-forge::libarchive
+          conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive
           conda install conda-forge::zlib
           conda install -c bioconda htslib samtools tabix
           npm install -g @jbrowse/cli
