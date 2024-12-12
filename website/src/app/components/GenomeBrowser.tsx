@@ -26,10 +26,10 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
               adapter: {
                 type: 'IndexedFastaAdapter',
                 fastaLocation: {
-                  uri: `/genome_data/${loc}/${assemblyName}`,
+                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${assemblyName}`,
                 },
                 faiLocation: {
-                  uri: `/genome_data/${loc}/${assemblyName}.fai`,
+                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${assemblyName}.fai`,
                 },
               },
             }
@@ -45,11 +45,11 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
             adapter: {
               type: 'Gff3TabixAdapter',
               gffGzLocation: {
-                uri: `/genome_data/${loc}/${loc}_genes.gff.gz`,
+                uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${loc}_genes.gff.gz`,
               },
               index: {
                 location: {
-                  uri: `/genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
+                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
                 },
               },
             },
