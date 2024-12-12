@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-let isLocalhost = false;
-
 // if (typeof window !== 'undefined') {
 //   isLocalhost = Boolean(
 //     window.location.hostname === 'localhost' || // [::1] is the IPv6 localhost address.
@@ -15,9 +13,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   images: {
     unoptimized: true
-  },
-  basePath: isLocalhost ? '' : process.env.NEXT_PUBLIC_BASE_PATH || '',
-  assetPrefix: isLocalhost ? '' : process.env.NEXT_PUBLIC_BASE_PATH || '',
+  }//,
+  // basePath: isLocalhost ? '' : process.env.NEXT_PUBLIC_BASE_PATH || '',
+  // assetPrefix: isLocalhost ? '' : process.env.NEXT_PUBLIC_BASE_PATH || '',
   // webpack: (config) => {
   //   config.resolve.alias = {
   //     ...config.resolve.alias,
