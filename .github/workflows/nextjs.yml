@@ -22,10 +22,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Create conda env
+        run: |
+          conda create -n samtools_env
+          conda activate samtools_env
+
       - name: Download db installer dependencies
         run: |
           conda install conda-forge::zlib
-          conda install -c bioconda samtools
+          conda install -c bioconda htslib
           npm install -g @jbrowse/cli
 
       - name: Download static Db
