@@ -38,7 +38,9 @@ jobs:
         run: |
           conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive
           conda install conda-forge::zlib
+          conda install -c conda-forge ncurses
           conda install -c bioconda htslib samtools tabix
+          conda update conda --all
           npm install -g @jbrowse/cli
 
       - name: Download static Db
