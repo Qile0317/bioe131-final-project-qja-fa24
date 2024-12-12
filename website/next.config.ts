@@ -15,14 +15,8 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  // assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
-  // webpack: (config) => {
-  //   config.resolve.alias = {
-  //     ...config.resolve.alias,
-  //     '@jbrowse/core': require.resolve('@jbrowse/core'),
-  //   };
-  //   return config;
-  // },
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
+  trailingSlash: true,
 };
 
 // export default nextConfig;
