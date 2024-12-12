@@ -4,7 +4,15 @@ This repository contains a cli tool that acts as a database installer for a coll
 
 The web interface is built using Next.js, React, TypeScript, and Tailwind CSS with the help of various npm packages. The database is installed using a bash script that downloads the data from a remote location and sets up the database for the web interface.
 
-## Local installation of the DB
+## Usage
+
+### Dependencies & System Requirements
+
+The database installer is only available for MacOS and Linux. Windows users are encouraged to use VM solutions like WSL2 or Docker to run the bash scripts.
+
+The required cli tools that must be available in `PATH` are [`wget`](https://www.gnu.org/software/wget/) and [`htslib`](https://www.htslib.org/). Additionally, the jbrowse cli tool is also required and must be available to bash, which can be installed with a node package manager `npm install -g @jbrowse/cli`
+
+### Running the database installer
 
 ```bash
 # clone the repo
@@ -12,10 +20,43 @@ git clone https://github.com/Qile0317/bioe131-final-project-qja-fa24.git
 cd bioe131-final-project-qja-fa24
 
 # install the database - replace <INSTALL_LOCATION> with the desired location
+# Note that you may need sudo permissions!
 bash installation_scripts/fetch_data.sh <INSTALL_LOCATION>
 ```
 
-## Usage and installation of the web explorer interface
+The output is a folder that looks something like this:
+
+```txt
+.
+└── Australia
+    │   ├── Australia.fna
+    │   ├── Australia.fna.fai
+    │   ├── Australia.fna.gz
+    │   ├── Australia.fna.gz.fai
+    │   ├── Australia.fna.gz.gzi
+    │   ├── Australia.gff
+    │   ├── Australia_genes.gff.gz
+    │   └── Australia_genes.gff.gz.tbi
+    .
+    .
+More data named by country...
+    .
+    .
+    ├── USA_(Texas)
+    │   ├── USA_(Texas).fna
+    │   ├── USA_(Texas).fna.fai
+    │   ├── USA_(Texas).fna.gz
+    │   ├── USA_(Texas).fna.gz.fai
+    │   ├── USA_(Texas).fna.gz.gzi
+    │   ├── USA_(Texas).gff
+    │   ├── USA_(Texas)_genes.gff.gz
+    │   └── USA_(Texas)_genes.gff.gz.tbi
+    └── metadata.csv
+```
+
+Where each country folder has the relevant data files, and a metadata file that currently contains the ID and country information.
+
+## Web explorer interface
 
 If you want to locally host the website, you must have the latest versions of `Node.js` and `npm` installed. To install the website and run it locally, do:
 
