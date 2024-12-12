@@ -72,7 +72,7 @@ export default function ResultsPage() {
           </div>
 
           {/* Tab Content */}
-          <div className="flex-grow bg-gray-800 flex items-center justify-center rounded">
+          <div className="flex-grow bg-gray-800 flex items-center justify-center rounded overflow-y-auto">
             {activeTab === 'Geolocation' && (
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}

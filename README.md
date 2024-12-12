@@ -11,7 +11,7 @@ The web interface is built using Next.js, React, TypeScript, and Tailwind CSS wi
 git clone https://github.com/Qile0317/bioe131-final-project-qja-fa24.git
 cd bioe131-final-project-qja-fa24
 
-# install the database - replace INSTALL_LOCATION with the desired location
+# install the database - replace <INSTALL_LOCATION> with the desired location
 bash installation_scripts/fetch_data.sh <INSTALL_LOCATION>
 ```
 

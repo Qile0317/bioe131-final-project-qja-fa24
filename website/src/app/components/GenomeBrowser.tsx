@@ -8,7 +8,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 
 type ViewModel = ReturnType<typeof createViewState>
 
-export default function GenomeBrowser({ assemblyName = 'China_(Wuhan)' }) {
+export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
 
   const [viewState, setViewState] = useState<ViewModel | null>(null);
   
@@ -26,10 +26,10 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan)' }) {
               adapter: {
                 type: 'IndexedFastaAdapter',
                 fastaLocation: {
-                  uri: `./genome_data/${loc}/${assemblyName}`,
+                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${assemblyName}`,
                 },
                 faiLocation: {
-                  uri: `./genome_data/${loc}/${assemblyName}.fai`,
+                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${assemblyName}.fai`,
                 },
               },
             }
@@ -45,16 +45,17 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan)' }) {
             adapter: {
               type: 'Gff3TabixAdapter',
               gffGzLocation: {
-                uri: `./genome_data/${loc}/${loc}_genes.gff.gz`,
+                uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${loc}_genes.gff.gz`,
               },
               index: {
                 location: {
-                  uri: `./genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
+                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
                 },
               },
             },
           },
         ],
+        // is this needed?
         defaultSession: {
           name: 'COVID-19 Browser',
           margin: 0,
