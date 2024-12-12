@@ -22,14 +22,14 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
             name: assemblyName,
             sequence: {
               type: 'ReferenceSequenceTrack',
-              trackId: `Reference Track (${assemblyName})`,
+              trackId: 'Reference Track (' + assemblyName + ')',
               adapter: {
                 type: 'IndexedFastaAdapter',
                 fastaLocation: {
-                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${assemblyName}`,
+                  uri: process.env.NEXT_PUBLIC_BASE_PATH + '/genome_data/' + loc + '/' + assemblyName,
                 },
                 faiLocation: {
-                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${assemblyName}.fai`,
+                  uri: process.env.NEXT_PUBLIC_BASE_PATH + '/genome_data/' + loc + '/' + assemblyName + '.fai',
                 },
               },
             }
@@ -45,11 +45,11 @@ export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
             adapter: {
               type: 'Gff3TabixAdapter',
               gffGzLocation: {
-                uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${loc}_genes.gff.gz`,
+                uri: process.env.NEXT_PUBLIC_BASE_PATH + '/genome_data/' + loc + '/' + loc + '_genes.gff.gz',
               },
               index: {
                 location: {
-                  uri: `${process.env.PUBLIC_URL}/genome_data/${loc}/${loc}_genes.gff.gz.tbi`,
+                  uri: process.env.NEXT_PUBLIC_BASE_PATH + '/genome_data/' + loc + '/' + loc + '_genes.gff.gz.tbi',
                 },
               },
             },
