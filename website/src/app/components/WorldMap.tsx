@@ -1,7 +1,7 @@
 'use client';
 import { MapPin } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { useMemo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Plot = dynamic(() => import('react-plotly.js'), {
   ssr: false,
@@ -156,8 +156,9 @@ export default function WorldMap({
       },
       paper_bgcolor: 'rgba(0,0,0,0)',
       margin: { t: 0, b: 0, l: 0, r: 0 },
-      height: 600,
-      width: 1000,
+      width: plotWidth,
+      // height: 600,
+      // width: 1000,
     };
   
     const handleClick = (event: { points: Array<{ pointIndex: number }> }) => {
