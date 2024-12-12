@@ -17,7 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: staphb/samtools
+    # container: staphb/samtools
     defaults:
       run:
         shell: bash -l {0}
@@ -26,21 +26,50 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up conda
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          miniconda-version: "latest"
-          channels: conda-forge, bioconda, defaults
-          use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
-          auto-update-conda: true
-          auto-activate-base: true
+      # - name: Set up conda
+      #   uses: conda-incubator/setup-miniconda@v3
+      #   with:
+      #     miniconda-version: "latest"
+      #     channels: conda-forge, bioconda, defaults
+      #     use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
+      #     auto-update-conda: true
+      #     auto-activate-base: true
 
       - name: Download db installer dependencies
         run: |
-          conda install -c conda-forge ncurses
-          conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive conda-forge::zlib
-          conda install -c bioconda htslib samtools tabix
           npm install -g @jbrowse/cli
+
+          sudo apt-get install gcc
+          sudo apt-get install make
+          sudo apt-get install libbz2-dev
+          sudo apt-get install zlib1g-dev
+          sudo apt-get install libncurses5-dev 
+          sudo apt-get install libncursesw5-dev
+          sudo apt-get install liblzma-dev
+
+          cd /usr/bin
+          wget https://github.com/samtools/htslib/releases/download/1.21/htslib-1.21.tar.bz2
+          tar -vxjf htslib-1.21.tar.bz2
+          cd htslib-1.21
+          make
+
+          cd ..
+          wget https://github.com/samtools/samtools/releases/download/1.21/samtools-1.21.tar.bz2
+          tar -vxjf samtools-1.21.tar.bz2
+          cd samtools-1.21
+          make
+
+          mkdir ~/myBinaries/
+          cd ~/myBinaries/
+          find /usr/bin/samtools-1.21/ -type f -executable | xargs -I v_b ln -s v_b ./
+          find /usr/bin/htslib-1.21/ -type f -executable | xargs -I v_b ln -s v_b ./
+          cd -
+          echo 'export PATH=$PATH:~/myBinaries' >>~/.profile
+          source ~/.profile
+
+        # conda install -c conda-forge ncurses
+        # conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive conda-forge::zlib
+        # conda install -c bioconda htslib samtools tabix
 
       - name: Download static Db
         run: |
