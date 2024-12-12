@@ -20,14 +20,10 @@ export default function ResultsPage() {
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna");
   const [queryResults] = useState(processStaticDatabase());
   const [selectedResult, setSelectedResult] = useState(queryResults[0]);
-  const [activeTab, setActiveTab] = useState('Visualization 1');
+  const [activeTab, setActiveTab] = useState('Geolocation');
 
   const handleDownload = () => {
     console.log('Downloading results');
-  };
-
-  const handleJBrowse = () => {
-    console.log('Opening in JBrowse');
   };
 
   return (
@@ -63,7 +59,7 @@ export default function ResultsPage() {
 
           {/* Tabs */}
           <div className="flex space-x-4 mb-4">
-            {['Visualization 1', 'Visualization 2', 'Visualization 3'].map((tab) => (
+            {['Geolocation', 'Jbrowse2'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -78,19 +74,11 @@ export default function ResultsPage() {
 
           {/* Tab Content */}
           <div className="flex-grow bg-gray-800 flex items-center justify-center rounded">
-            {activeTab === 'Visualization 1' && (
+            {activeTab === 'Geolocation' && (
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}
-            {activeTab === 'Visualization 2' && (
+            {activeTab === 'Jbrowse2' && (
               <GenomeBrowser assemblyName={selectedGenome} />
-            )}
-            {activeTab === 'Visualization 3' && (
-              <Image
-                src="/placeholder-chart3.svg"
-                alt="Visualization 3 Placeholder"
-                width={800}
-                height={400}
-              />
             )}
           </div>
 
@@ -101,12 +89,6 @@ export default function ResultsPage() {
               className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
             >
               Download Results
-            </button>
-            <button
-              onClick={handleJBrowse}
-              className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
-            >
-              Open in JBrowse
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function Navbar() {
           height={40} 
           className="filter brightness-0 invert"
         />
-        <span className="text-xl font-bold text-cyan-300">Virus Database</span>
+        <span className="text-xl font-bold text-cyan-300">Virus Database Explorer</span>
       </Link>
       <div className="space-x-4">
         <Link href="/" className="hover:text-cyan-300 transition-colors">Home</Link>
