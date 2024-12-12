@@ -28,8 +28,7 @@ jobs:
 
       - name: Download db installer dependencies
         run: |
-          sudo apt install nodejs
-          sudo apt install npm 
+          apt-get install -y nodejs npm
           npm install -g @jbrowse/cli
 
       - name: Download static Db
