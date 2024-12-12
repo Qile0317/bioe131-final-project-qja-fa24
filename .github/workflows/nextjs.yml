@@ -17,7 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: biocontainers/samtools
+    container: mgibio/samtools:1.15.1-buster
     defaults:
       run:
         shell: bash -l {0}
