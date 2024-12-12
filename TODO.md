@@ -3,7 +3,7 @@
 ## Final feature list
 
 - [ ] CLI tool
-    - [ ] Database installer
+    - [x] Database installer
     - [ ] optional arguments to compute metrics to add to metadata
         - [ ] MAF frequency
         - [ ] Nucleotide diversity
