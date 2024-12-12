@@ -31,11 +31,12 @@ jobs:
         run: |
           conda install conda-forge::zlib
           conda install -c bioconda htslib samtools tabix
+
+          echo installing jbrowse-cli with npm
           npm install -g @jbrowse/cli
 
       - name: Download static Db
         run: |
-          source ~/miniconda3/etc/profile.d/conda.sh
           conda activate samtools_env
           bash installation_scripts/fetch_data.sh
       
