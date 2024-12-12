@@ -17,7 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: mgibio/samtools:1.15.1-buster
     defaults:
       run:
         shell: bash -l {0}
@@ -26,14 +25,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download db installer dependencies
+      - name: Download and load static db
         run: |
-          apt-get install -y nodejs npm
-          npm install -g @jbrowse/cli
-
-      - name: Download static Db
-        run: |
-          bash installation_scripts/fetch_data.sh
+          git clone https://github.com/Qile0317/covid-sequences.git
+          mv covid-sequences website/public/genome_data
       
       - name: Detect package manager
         id: detect-package-manager
