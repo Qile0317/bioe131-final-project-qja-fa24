@@ -24,15 +24,15 @@ jobs:
 
       - name: Create conda env
         run: |
-          conda init
           conda create -n samtools_env
-          conda activate samtools_env
+          conda init
           source ~/.bashrc
+          conda activate samtools_env
 
       - name: Download db installer dependencies
         run: |
           conda install conda-forge::zlib
-          conda install -c bioconda htslib
+          conda install -c bioconda htslib samtools tabix
           npm install -g @jbrowse/cli
 
       - name: Download static Db
