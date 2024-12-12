@@ -8,7 +8,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 
 type ViewModel = ReturnType<typeof createViewState>
 
-export default function GenomeBrowser({ assemblyName = 'China_(Wuhan)' }) {
+export default function GenomeBrowser({ assemblyName = 'China_(Wuhan).fna' }) {
 
   const [viewState, setViewState] = useState<ViewModel | null>(null);
   
