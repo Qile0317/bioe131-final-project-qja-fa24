@@ -79,4 +79,4 @@ npm run dev
 - Qile Yang (@Qile0317)
     - main creator of website and some setup scripts and docs
 
-please note that the example data contained in `/website/public/genome_data` is an exact copy of the result of running the database installer. This is to allow the website to be run without the need to install the database via CI/CD which is not supported in this project.
+> To graders: please note that the example data contained in `/website/public/genome_data` is an exact copy of the result of running the database installer. This is to allow the website to be run without the need to install the database via CI/CD which is not supported in this project.
