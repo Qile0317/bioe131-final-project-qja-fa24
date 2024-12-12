@@ -47,10 +47,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* temporary experimental embedding */}
-        {/* <GenomeBrowser assemblyName={selectedGenome}/> */}
-        {/* <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} /> */}
-
       </main>
     </div>
   );
