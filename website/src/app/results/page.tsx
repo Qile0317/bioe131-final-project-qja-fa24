@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 import WorldMap from '../components/WorldMap';
 import GenomeBrowser from '../components/GenomeBrowser';
 
