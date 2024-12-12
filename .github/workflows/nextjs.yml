@@ -35,6 +35,8 @@ jobs:
 
       - name: Download static Db
         run: |
+          source ~/miniconda3/etc/profile.d/conda.sh
+          conda activate samtools_env
           bash installation_scripts/fetch_data.sh
       
       - name: Detect package manager
