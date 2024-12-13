@@ -6,16 +6,14 @@ export default function Home() {
   const [metadataQuery, setMetadataQuery] = useState('');
 
   const handleSearch = () => {
-    // If no specific inputs are given, return entire database
+
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
     if (!metadataQuery) {
-      window.location.href = process.env.NEXT_PUBLIC_BASE_PATH 
-        ? `${process.env.NEXT_PUBLIC_BASE_PATH}/results?fetchAll=true`
-        : '/results?fetchAll=true';
+      window.location.href = basePath + '/results?fetchAll=true';
       return;
     }
   
-    // Redirect to results page with search parameters
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     window.location.href = `${basePath}/results?metadata=${encodeURIComponent(metadataQuery)}`;
   };
 
