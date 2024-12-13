@@ -1,8 +1,10 @@
 "use client";
 import { useState } from 'react';
+import { parse } from 'papaparse';
 
 export default function Home() {
 
+  const [metadata, setMetadata] = useState([]);
   const [metadataQuery, setMetadataQuery] = useState('');
 
   const handleSearch = () => {
