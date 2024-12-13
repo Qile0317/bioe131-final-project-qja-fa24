@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+// import { parse } from 'papaparse';
 import WorldMap from '../components/WorldMap';
 import GenomeBrowser from '../components/GenomeBrowser';
 
@@ -15,11 +16,27 @@ const processStaticDatabase = () => {
   return staticDatabase.map((entry) => ({ ...entry }));
 };
 
-export default function ResultsPage() {
+export default function ResultsPage(metadataQuery: string = "") {
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna");
   const [queryResults] = useState(processStaticDatabase());
   const [selectedResult, setSelectedResult] = useState(queryResults[0]);
   const [activeTab, setActiveTab] = useState('Geolocation');
+  // const [metadata, setMetadata] = useState<unknown[]>();
+
+  // useEffect(() => {
+  //   const filePath = process.env.NEXT_PUBLIC_BASE_PATH + "/genome_data/metadata.csv";
+  //   parse(filePath, {
+  //     download: true,
+  //     header: true,
+  //     dynamicTyping: true,
+  //     complete: function (results) {
+  //       setMetadata(results.data);
+  //     },
+  //     error: function (error) {
+  //       console.error("Error parsing CSV:", error);
+  //     }
+  //   });
+  // }, []);
 
   const handleDownload = () => {
     console.log('Downloading results');

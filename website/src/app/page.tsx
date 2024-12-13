@@ -1,22 +1,15 @@
 "use client";
 import { useState } from 'react';
-import { parse } from 'papaparse';
 
 export default function Home() {
-
-  const [metadata, setMetadata] = useState([]);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [metadataQuery, setMetadataQuery] = useState('');
 
   const handleSearch = () => {
-
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-
-    if (!metadataQuery) {
-      window.location.href = basePath + '/results?fetchAll=true';
-      return;
-    }
-  
-    window.location.href = `${basePath}/results?metadata=${encodeURIComponent(metadataQuery)}`;
+    const targetUrl = metadataQuery
+      ? `${basePath}/results.html?metadata=${encodeURIComponent(metadataQuery)}`
+      : `${basePath}/results.html?fetchAll=true`;
+    window.location.href = targetUrl;
   };
 
   return (
@@ -24,12 +17,11 @@ export default function Home() {
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-center">Virus Sequence Database</h1>
 
-        {/* Metadata Query - TODO input sanitization! */}
         <div className="mb-6">
           <label htmlFor="metadata-query" className="block mb-2 font-semibold">
             Metadata SQL Query
           </label>
-          <input 
+          <input
             id="metadata-query"
             value={metadataQuery}
             onChange={(e) => setMetadataQuery(e.target.value)}
@@ -39,14 +31,13 @@ export default function Home() {
         </div>
 
         <div className="text-center">
-          <button 
+          <button
             onClick={handleSearch}
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
           >
             Search Database (Click with no input for all data)
           </button>
         </div>
-
       </main>
     </div>
   );
