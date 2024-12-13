@@ -13,14 +13,16 @@
     "@fontsource/roboto": "^4.5.5",
     "@jbrowse/react-app": "^2.18.0",
     "@mui/system": "^5.0.0",
+    "linqts": "^2.0.0",
     "lucide-react": "^0.468.0",
     "next": "^15.1.0",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "papaparse": "^5.4.1",
     "plotly.js": "^2.35.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-draggable": "^4.4.6",
     "react-plotly.js": "^2.6.0",
-    "node-polyfill-webpack-plugin": "^2.0.1",
     "web-vitals": "^3.3.1"
   },
   "devDependencies": {

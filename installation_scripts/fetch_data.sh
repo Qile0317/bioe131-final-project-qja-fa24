@@ -5,7 +5,6 @@ APACHE_ROOT=${APACHE_ROOT:=/var/www/html}
 
 IFS=$'\n'
 
-metadata_file="genome_data/metadata.csv"
 temp_dir="temp_genome_data"
 mkdir -p "$temp_dir"
 echo "id,country" > "$temp_dir/metadata.csv"
@@ -37,14 +36,18 @@ for line in $(cat installation_scripts/data_listing.txt); do
     bgzip ${location}_genes.gff
     tabix ${location}_genes.gff.gz
 
-    echo "$acc,$location" >> "../../metadata.csv"
-
     cd ../..
+    echo "$acc,$location" >> "$temp_dir/metadata.csv"
 done
 
 # Move the temp directory to the specified location
 if [ -z "$1" ]; then
-    mv "$temp_dir/" website/public/genome_data/
+    if [ ! -d "website/public/genome_data/" ]; then
+        mkdir -p "website/public/genome_data/"
+    fi
+    mv "$temp_dir"/* website/public/genome_data/
 else
-    mv "$temp_dir/" "$1"
+    mv "$temp_dir"/* "$1"
 fi
+
+rmdir "$temp_dir"

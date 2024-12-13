@@ -12,7 +12,7 @@ The web interface is built using Next.js, React, TypeScript, and Tailwind CSS wi
 
 The database installer is only available for MacOS and Linux. Windows users are encouraged to use VM solutions like WSL2 or Docker to run the bash scripts.
 
-The required cli tools that must be available in `PATH` are [`wget`](https://www.gnu.org/software/wget/), [`htslib`, `samtools`, and `tabix`](https://www.htslib.org/). Additionally, the jbrowse cli tool is also required and must be available to bash, which can be installed with `npm install -g @jbrowse/cli`
+The required cli tools that must be available in `PATH` are [`wget`](https://www.gnu.org/software/wget/), [`htslib`, `samtools`, and `tabix`](https://www.htslib.org/). Additionally, the [jbrowse cli](https://www.npmjs.com/package/@jbrowse/cli/v/2.1.0) tool is also required and must be available in PATH, which can be installed with `npm install -g @jbrowse/cli`
 
 ### Running the database installer
 
