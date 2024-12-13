@@ -1,3 +1,7 @@
+<div style="float: right; margin-left: 20px; margin-bottom: 20px;">
+  <img src="website/public/logo.png" alt="Logo" style="width: 150px;">
+</div>
+
 # Final project for BIOE 131: Fall 2024
 
 This repository contains a cli tool that acts as a database installer for a collection of COVID-19 viral sequences from across the world. There is also a web interface that allows users to explore the sequences by country, and other extensible parameters.
