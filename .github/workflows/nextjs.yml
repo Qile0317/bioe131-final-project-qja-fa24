@@ -17,17 +17,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     shell: bash -l {0}
+
     steps:
 
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: print static file tree
-        run: |
-          tree website/public
       
       - name: Detect package manager
         id: detect-package-manager

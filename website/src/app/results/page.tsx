@@ -77,7 +77,7 @@ export default function ResultsPage() {
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}
             {activeTab === 'Jbrowse2' && (
-              <GenomeBrowser assemblyName={selectedGenome} />
+              <GenomeBrowser assemblyNames={[selectedGenome]} />
             )}
           </div>
 
