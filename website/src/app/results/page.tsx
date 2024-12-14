@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { parse } from 'papaparse';
 import alasql from 'alasql';
 import { useSearchParams } from 'next/navigation';
@@ -25,7 +25,7 @@ function column(data: TabularDataRow[], columnName: string): (string | number)[]
   return data.map(row => row[columnName]);
 }
 
-export default function ResultsPage() {
+function ResultsPage() {
   
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna"); // TODO should be the first in filtered db
 
@@ -139,3 +139,13 @@ export default function ResultsPage() {
     </div>
   );
 }
+
+const ResultsPageWrapper = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResultsPage />
+    </Suspense>
+  );
+};
+
+export default ResultsPageWrapper;

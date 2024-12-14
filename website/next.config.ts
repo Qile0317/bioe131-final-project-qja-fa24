@@ -1,13 +1,5 @@
 import type { NextConfig } from "next";
 
-// if (typeof window !== 'undefined') {
-//   isLocalhost = Boolean(
-//     window.location.hostname === 'localhost' || // [::1] is the IPv6 localhost address.
-//     window.location.hostname === '127.0.0.1'
-//   );
-// }
-
-
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: 'export',
@@ -17,6 +9,12 @@ const nextConfig: NextConfig = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
   assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || "",
   trailingSlash: true,
+  webpack: function (config) {
+    Object.assign(config.module, {
+      noParse: [/alasql/]
+    });
+    return config;
+  },
 };
 
 // export default nextConfig;
