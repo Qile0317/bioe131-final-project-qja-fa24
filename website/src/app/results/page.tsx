@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-// import { parse } from 'papaparse';
+import { parse } from 'papaparse';
 import WorldMap from '../components/WorldMap';
 import GenomeBrowser from '../components/GenomeBrowser';
 
@@ -21,22 +21,24 @@ export default function ResultsPage() {
   const [queryResults] = useState(processStaticDatabase());
   const [selectedResult, setSelectedResult] = useState(queryResults[0]);
   const [activeTab, setActiveTab] = useState('Geolocation');
-  // const [metadata, setMetadata] = useState<unknown[]>();
+  const [metadata, setMetadata] = useState<unknown[]>();
 
-  // useEffect(() => {
-  //   const filePath = process.env.NEXT_PUBLIC_BASE_PATH + "/genome_data/metadata.csv";
-  //   parse(filePath, {
-  //     download: true,
-  //     header: true,
-  //     dynamicTyping: true,
-  //     complete: function (results) {
-  //       setMetadata(results.data);
-  //     },
-  //     error: function (error) {
-  //       console.error("Error parsing CSV:", error);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    const filePath = process.env.NEXT_PUBLIC_BASE_PATH + "/genome_data/metadata.csv";
+    parse(filePath, {
+      download: true,
+      header: true,
+      dynamicTyping: true,
+      complete: function (results) {
+        setMetadata(results.data);
+      },
+      error: function (error) {
+        console.error("Error parsing CSV:", error);
+      }
+    });
+  }, []);
+
+  console.log(metadata); // placeholder
 
   const handleDownload = () => {
     console.log('Downloading results');
