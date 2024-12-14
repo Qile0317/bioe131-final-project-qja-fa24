@@ -13,6 +13,7 @@
     "@fontsource/roboto": "^4.5.5",
     "@jbrowse/react-app": "^2.18.0",
     "@mui/system": "^5.0.0",
+    "alasql": "^4.6.0",
     "linqts": "^2.0.0",
     "lucide-react": "^0.468.0",
     "next": "^15.1.0",

@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { parse } from 'papaparse';
+import alasql from 'alasql';
+import { useSearchParams } from 'next/navigation';
 import WorldMap from '../components/WorldMap';
 import GenomeBrowser from '../components/GenomeBrowser';
 
@@ -24,6 +26,7 @@ function column(data: TabularDataRow[], columnName: string): (string | number)[]
 }
 
 export default function ResultsPage() {
+  
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna"); // TODO should be the first in filtered db
 
   // load metadata into array of jsons with papaparse
@@ -43,6 +46,18 @@ export default function ResultsPage() {
       }
     });
   }, []);
+
+  // handle metadata filtering
+  const searchParams = useSearchParams();
+  const metadataQuery = searchParams.get('metadata') || null;
+  useEffect(() => {
+    if (metadata.length > 0) {
+      const query = "SELECT * FROM ?" +
+        metadataQuery ? " WHERE " + decodeURIComponent(metadataQuery as string) : "";
+      const result = alasql(query, [metadata]);
+      setMetadata(result);
+    }
+  }, [metadata, metadataQuery]);
 
   const [selectedResult, setSelectedResult] = useState(metadata[0]);
   
@@ -100,7 +115,7 @@ export default function ResultsPage() {
             ))}
           </div>
 
-          {/* Tab Content */}
+          {/* Visualization tabs */}
           <div className="flex-grow bg-gray-800 flex items-center justify-center rounded overflow-y-auto">
             {activeTab === 'Geolocation' && (
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
