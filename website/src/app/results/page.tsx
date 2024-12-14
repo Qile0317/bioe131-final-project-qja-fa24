@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { parse } from 'papaparse';
-import alasql from 'alasql';
 import { useSearchParams } from 'next/navigation';
 import WorldMap from '../components/WorldMap';
 import GenomeBrowser from '../components/GenomeBrowser';
@@ -23,6 +22,33 @@ function createTabularDataRowArray(jsonArray: any[]): TabularDataRow[] {
 
 function column(data: TabularDataRow[], columnName: string): (string | number)[] {
   return data.map(row => row[columnName]);
+}
+
+// cursed SQL query parser
+function queryFilter(data: TabularDataRow[], query: string): TabularDataRow[] {
+  const operators = ['AND', 'OR', 'NOT', '=', '!=', '>', '<', '>=', '<=', '+', '-', '*', '/', '%', 'length'];
+  let jsCondition = query
+    .replace(/\bAND\b/g, '&&')
+    .replace(/\bOR\b/g, '||')
+    .replace(/\bNOT\b/g, '!')
+    .replace(/=/g, '===')
+    .replace(/!-/g, '!==')
+    .replace(/(\d+)([+\-*\/%])(\d+)/g, '($1$2$3)')
+    .replace(/(\w+)\s*\(\s*(\w+)\s*\)/g, '$1($2)');
+
+  const forbidden = /[^a-zA-Z0-9_ \.\(\)\!\&\|\>\<\=\!\+\-\*\/\%\s"'\=length]+/g;
+  if (forbidden.test(jsCondition)) {
+    throw new Error('Invalid query syntax.');
+  }
+
+  try {
+    return data.filter((row) =>
+      Function('"use strict"; return (' + jsCondition + ')').call(row)
+    );
+  } catch (error) {
+    console.error('Error parsing query:', error);
+    return [];
+  }
 }
 
 export default function ResultsPage() {
@@ -47,17 +73,16 @@ export default function ResultsPage() {
     });
   }, []);
 
-  // handle metadata filtering
-  const searchParams = useSearchParams();
-  const metadataQuery = searchParams.get('metadata') || null;
+  // metadata filtering
   useEffect(() => {
-    if (metadata.length > 0) {
-      const query = "SELECT * FROM ?" +
-        metadataQuery ? " WHERE " + decodeURIComponent(metadataQuery as string) : "";
-      const result = alasql(query, [metadata]);
-      setMetadata(result);
+    const rawUrlQuery = useSearchParams().get('metadata') || null
+    if (!rawUrlQuery) {
+      return;
     }
-  }, [metadata, metadataQuery]);
+
+    const sqlQuery = decodeURIComponent(rawUrlQuery as string)
+    setMetadata(queryFilter(metadata, sqlQuery))
+  }, [metadata]);
 
   const [selectedResult, setSelectedResult] = useState(metadata[0]);
   
