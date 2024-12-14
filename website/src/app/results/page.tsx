@@ -4,12 +4,27 @@ import { parse } from 'papaparse';
 import WorldMap from '../components/WorldMap';
 import GenomeBrowser from '../components/GenomeBrowser';
 
+type TabularDataRow = {
+  id: string;
+  [key: string]: string | number;
+}
+
+function createTabularDataRowArray(jsonArray: any[]): TabularDataRow[] {
+  return jsonArray.map((item) => {
+    const { id, ...rest } = item;
+    return {
+      id: String(id),
+      ...rest
+    };
+  });
+}
+
 export default function ResultsPage() {
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna"); // TODO should be the first in filtered db
   const [activeTab, setActiveTab] = useState('Geolocation');
 
   // load metadata into array of jsons with papaparse
-  const [metadata, setMetadata] = useState<unknown[]>();
+  const [metadata, setMetadata] = useState<TabularDataRow[]>([]);
   useEffect(() => {
     const filePath = process.env.NEXT_PUBLIC_BASE_PATH + "/genome_data/metadata.csv";
     parse(filePath, {
@@ -18,7 +33,7 @@ export default function ResultsPage() {
       dynamicTyping: true,
       skipEmptyLines: true,
       complete: function (results) {
-        setMetadata(results.data);
+        setMetadata(createTabularDataRowArray(results.data));
       },
       error: function (error) {
         console.error("Error parsing CSV:", error);
@@ -31,8 +46,8 @@ export default function ResultsPage() {
   const processStaticDatabase = () => {
     return metadata ? metadata.map((entry) => (typeof entry === 'object' && entry !== null ? { ...entry } : {})) : [];
   };
-  const [queryResults] = useState(processStaticDatabase());
-  const [selectedResult, setSelectedResult] = useState(queryResults[0]);
+
+  const [selectedResult, setSelectedResult] = useState(metadata[0]);
   
   const handleDownload = () => {
     console.log('Downloading results');
@@ -41,11 +56,12 @@ export default function ResultsPage() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       <main className="flex-grow container mx-auto px-4 py-8 grid grid-cols-3 gap-8">
+
         {/* Results List */}
         <div className="border border-gray-700 rounded p-4 col-span-1">
           <h2 className="text-2xl font-bold mb-4">Query Results</h2>
           <div className="overflow-y-auto max-h-[600px]">
-            {queryResults.map((result) => (
+            {metadata.map((result) => (
               <div
                 key={result.id}
                 onClick={() => setSelectedResult(result)}
