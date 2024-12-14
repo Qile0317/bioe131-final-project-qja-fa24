@@ -182,7 +182,7 @@ export default function WorldMap({
         {/* Background Map with Pins */}
         <div
           style={{
-            backgroundImage: "url('/world-map.svg')",
+            backgroundImage: "url(process.env.NEXT_PUBLIC_BASE_PATH + '/world-map.svg')",
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
