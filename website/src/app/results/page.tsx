@@ -16,8 +16,8 @@ const processStaticDatabase = () => {
   return staticDatabase.map((entry) => ({ ...entry }));
 };
 
-export default function ResultsPage(metadataQuery: string = "") {
-  const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna");
+export default function ResultsPage() {
+  const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna"); // TODO should be the first in filtered db
   const [queryResults] = useState(processStaticDatabase());
   const [selectedResult, setSelectedResult] = useState(queryResults[0]);
   const [activeTab, setActiveTab] = useState('Geolocation');
