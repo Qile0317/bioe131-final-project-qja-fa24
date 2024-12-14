@@ -68,8 +68,9 @@ If you want to locally host the website, you must have the latest versions of `N
 bash installation_scripts/fetch_data.sh
 cd website
 npm install
-npm run dev
-# open browser on the corresponding localhost port, probably 3000 if not in use
+npm run build
+npx serve@latest out
+# open browser on the corresponding localhost port
 ```
 
 ## Team members and contributions
