@@ -4,22 +4,8 @@ import { parse } from 'papaparse';
 import WorldMap from '../components/WorldMap';
 import GenomeBrowser from '../components/GenomeBrowser';
 
-// Static database simulation
-const staticDatabase = [
-  { id: 1, name: 'Virus Sample 1', location: 'USA', year: 2022 },
-  { id: 2, name: 'Virus Sample 2', location: 'Europe', year: 2021 },
-  { id: 3, name: 'Virus Sample 3', location: 'Asia', year: 2023 },
-];
-
-// Static processing function
-const processStaticDatabase = () => {
-  return staticDatabase.map((entry) => ({ ...entry }));
-};
-
 export default function ResultsPage() {
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna"); // TODO should be the first in filtered db
-  const [queryResults] = useState(processStaticDatabase());
-  const [selectedResult, setSelectedResult] = useState(queryResults[0]);
   const [activeTab, setActiveTab] = useState('Geolocation');
 
   // load metadata into array of jsons with papaparse
@@ -42,6 +28,12 @@ export default function ResultsPage() {
 
   console.log(metadata); // placeholder
 
+  const processStaticDatabase = () => {
+    return metadata ? metadata.map((entry) => (typeof entry === 'object' && entry !== null ? { ...entry } : {})) : [];
+  };
+  const [queryResults] = useState(processStaticDatabase());
+  const [selectedResult, setSelectedResult] = useState(queryResults[0]);
+  
   const handleDownload = () => {
     console.log('Downloading results');
   };
