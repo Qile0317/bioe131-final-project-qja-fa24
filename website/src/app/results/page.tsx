@@ -110,7 +110,7 @@ export default function ResultsPage() {
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}
             {activeTab === 'Jbrowse2' && (
-              <GenomeBrowser assemblyNames={column(metadata, "country") as string[]} />
+              <GenomeBrowser assemblyNames={(column(metadata, "country") as string[]).map(c => c + ".fai")} />
             )}
           </div>
 
