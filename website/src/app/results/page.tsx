@@ -53,7 +53,7 @@ function ResultsPage() {
   useEffect(() => {
     if (metadata.length > 0) {
       const query = "SELECT * FROM ?" +
-        metadataQuery ? " WHERE " + decodeURIComponent(metadataQuery as string) : "";
+        (metadataQuery !== null ? " WHERE " + decodeURIComponent(metadataQuery as string) : "");
       const result = alasql(query, [metadata]);
       setMetadata(result);
     }
@@ -142,7 +142,15 @@ function ResultsPage() {
 
 const ResultsPageWrapper = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500 border-solid mx-auto mb-6"></div>
+          <p className="text-white text-xl">Loading your results...</p>
+          <p className="text-gray-400 text-sm mt-2">Please wait while we fetch the data</p>
+        </div>
+      </div>
+    }>
       <ResultsPage />
     </Suspense>
   );
