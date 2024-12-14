@@ -25,7 +25,7 @@ export default function Home() {
             id="metadata-query"
             value={metadataQuery}
             onChange={(e) => setMetadataQuery(e.target.value)}
-            placeholder="e.g., LOCATION = 'USA' AND YEAR > 2020"
+            placeholder="e.g., country = 'China'"
             className="w-full p-2 border rounded bg-white text-black placeholder-gray-500"
           />
         </div>

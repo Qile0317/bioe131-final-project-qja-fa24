@@ -25,7 +25,6 @@ function column(data: TabularDataRow[], columnName: string): (string | number)[]
 
 export default function ResultsPage() {
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna"); // TODO should be the first in filtered db
-  const [activeTab, setActiveTab] = useState('Geolocation');
 
   // load metadata into array of jsons with papaparse
   const [metadata, setMetadata] = useState<TabularDataRow[]>([]);
@@ -45,17 +44,14 @@ export default function ResultsPage() {
     });
   }, []);
 
-  console.log(metadata); // placeholder
-
-  const processStaticDatabase = () => {
-    return metadata ? metadata.map((entry) => (typeof entry === 'object' && entry !== null ? { ...entry } : {})) : [];
-  };
-
   const [selectedResult, setSelectedResult] = useState(metadata[0]);
   
   const handleDownload = () => {
     console.log('Downloading results');
   };
+
+  // tab content on the rhs
+  const [activeTab, setActiveTab] = useState('Geolocation');
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
@@ -110,7 +106,7 @@ export default function ResultsPage() {
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}
             {activeTab === 'Jbrowse2' && (
-              <GenomeBrowser assemblyNames={(column(metadata, "country") as string[]).map(c => c + ".fai")} />
+              <GenomeBrowser assemblyNames={(column(metadata, "country") as string[]).map(c => c + ".fna")} />
             )}
           </div>
 
