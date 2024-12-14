@@ -7,8 +7,8 @@ export default function Home() {
 
   const handleSearch = () => {
     const targetUrl = metadataQuery
-      ? `${basePath}/results.html?metadata=${encodeURIComponent(metadataQuery)}`
-      : `${basePath}/results.html?fetchAll=true`;
+      ? `${basePath}/results?metadata=${encodeURIComponent(metadataQuery)}`
+      : `${basePath}/results?fetchAll=true`;
     window.location.href = targetUrl;
   };
 
