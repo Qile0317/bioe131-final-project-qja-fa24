@@ -19,6 +19,10 @@ function createTabularDataRowArray(jsonArray: any[]): TabularDataRow[] {
   });
 }
 
+function column(data: TabularDataRow[], columnName: string): (string | number)[] {
+  return data.map(row => row[columnName]);
+}
+
 export default function ResultsPage() {
   const [selectedGenome, setSelectedGenome] = useState<string>("China_(Wuhan).fna"); // TODO should be the first in filtered db
   const [activeTab, setActiveTab] = useState('Geolocation');
@@ -106,7 +110,7 @@ export default function ResultsPage() {
               <WorldMap onCountrySelect={(country) => setSelectedGenome(country.genomeAssembly)} />
             )}
             {activeTab === 'Jbrowse2' && (
-              <GenomeBrowser assemblyNames={[selectedGenome]} />
+              <GenomeBrowser assemblyNames={column(metadata, "country") as string[]} />
             )}
           </div>
 
