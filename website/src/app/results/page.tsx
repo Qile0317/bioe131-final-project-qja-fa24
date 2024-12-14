@@ -21,14 +21,16 @@ export default function ResultsPage() {
   const [queryResults] = useState(processStaticDatabase());
   const [selectedResult, setSelectedResult] = useState(queryResults[0]);
   const [activeTab, setActiveTab] = useState('Geolocation');
-  const [metadata, setMetadata] = useState<unknown[]>();
 
+  // load metadata into array of jsons with papaparse
+  const [metadata, setMetadata] = useState<unknown[]>();
   useEffect(() => {
     const filePath = process.env.NEXT_PUBLIC_BASE_PATH + "/genome_data/metadata.csv";
     parse(filePath, {
       download: true,
       header: true,
       dynamicTyping: true,
+      skipEmptyLines: true,
       complete: function (results) {
         setMetadata(results.data);
       },
